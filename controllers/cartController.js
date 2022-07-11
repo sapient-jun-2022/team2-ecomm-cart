@@ -7,7 +7,7 @@ export const addProductToCart = async (req, res) => {
     req.body.product.price * req.body.product.quantity
   ).toFixed(2);
   if (cart) {
-    let total = cart.total + addProductToCart;
+    let total = +cart.total + addProductToCart;
     let products = [...cart.products];
     const productIndex = products.findIndex(
       (product) => product.productId === req.body.product._id
@@ -30,7 +30,7 @@ export const addProductToCart = async (req, res) => {
 
     cart.products = products;
     cart.total = parseFloat(
-      products.reduce((total, _product) => total + _product.subtotal, 0)
+      products.reduce((total, _product) => total + +_product.subtotal, 0)
     ).toFixed(2);
 
     user.cart = cart;
@@ -55,7 +55,10 @@ export const addProductToCart = async (req, res) => {
     if(err){
       res.send(err);
     }else{
-      res.json(updatedUser.cart)
+      res.json({
+        status:true,
+        cart:updatedUser.cart
+      })
     }
   });
 };
@@ -64,7 +67,7 @@ export const deleteProductToCart = async (req, res) => {
   let cart = user.cart;
   if (cart) {
     let products = [...cart.products];
-    const productIndex = products.findIndex((_product)=>_product.productId===req.body.product.productId);
+    const productIndex = products.findIndex((_product)=>_product.productId===req.body.product._id);
     const product = products[productIndex];
     product.quantity -= req.body.product.quantity;
     product.subtotal = parseFloat(
@@ -81,7 +84,7 @@ export const deleteProductToCart = async (req, res) => {
 
     user.cart = cart;
     await user.save();
-    res.json(cart);
+    res.json({status:true,cart});
 
 
 
@@ -95,6 +98,6 @@ export const deleteProductToCart = async (req, res) => {
 };
 export const getCart = async (req, res) => {
   const user = await User.findOne({_id:req.user._id}).select({cart:1});
-  res.json(user.cart);
+  res.json({status:true, cart:user.cart});
   //res.send("GET: get cart");
 };

@@ -30,7 +30,7 @@ function checkAuth(req, res, next) {
 
 function checkAuthV2(req, res, next) {
   console.log(req.headers);
-  request.post('http://localhost:8000/user/authorize',{
+  request.post('http://localhost:3000/user/authorize',{
     headers:{
       "Authorization":req.headers.authorization,
       "Content-Type":"application/json"

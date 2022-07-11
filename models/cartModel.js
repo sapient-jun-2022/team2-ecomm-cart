@@ -18,6 +18,8 @@ const ProductSchema = new Schema(
       type: Number,
       required: 0,
     },
+    image: String,
+    description: String,
     subtotal: {
       type: Number,
       required: true,
