@@ -29,13 +29,14 @@ function checkAuth(req, res, next) {
 }
 
 function checkAuthV2(req, res, next) {
-  console.log(req.headers);
-  request.post('http://localhost:3000/user/authorize',{
+  console.log('HH',req.headers);
+  request.post(`${process.env.API_ENDPOINT}/user/authorize`,{
     headers:{
       "Authorization":req.headers.authorization,
       "Content-Type":"application/json"
     }
   },(err,response,body)=>{
+    console.log(err);
     const resJSON = JSON.parse(body);
     if(resJSON.status && resJSON.user){
       req.user = resJSON.user;

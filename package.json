@@ -4,13 +4,19 @@
   "description": "MongoDB Schema",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js --exec babel-node -e js",
-    "debug": "nodemon app.js --exec babel-node -e js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run clean && npm run build && node ./dist/app.js",
+    "build": "NODE_ENV=production ./node_modules/.bin/babel src --out-dir dist",
+    "serve": "nodemon ./src/app.js --exec babel-node -e js",
+    "clean": "rm -rf dist"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-inline-dotenv": "^1.7.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.20.0",
     "dotenv": "^16.0.1",
@@ -21,9 +27,6 @@
     "winston": "^3.7.2"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-0": "^6.24.1",
     "nodemon": "^2.0.16"
   }
 }

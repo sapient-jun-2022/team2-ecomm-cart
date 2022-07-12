@@ -32,7 +32,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6I
 }
 
 ####### Get Cart
-GET http://localhost:8000/cart/ HTTP/1.1
+GET http://localhost:3002/cart/ HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYyYmJkNTVkYWEzYTExZTNjYjNlOWE0ZCIsImVtYWlsIjoiaGltYW5zaHUubWFoYXJhQHB1YmxpY2lzc2FwaWVudC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCQwVEdodjhrYk5zLjdKUzhPcVpNUDAuM21BZnpUWllZdVJ5aC5KQ1VoWE5iUVBLdXNmenhnQyIsIm5hbWUiOiJIaW1hbnNodSBNYWhhcmEyIiwiY3JlYXRlZGF0IjoiMjAyMi0wNi0yOVQwNDozMDoyMS41NThaIiwiX192IjowfSwiaWF0IjoxNjU2NTA4MzIyfQ.qQYSTLhCw0O-eARkv1tTEiQkinfKAaP4jdgYpE-Zvus
 

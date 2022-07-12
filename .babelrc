@@ -2,5 +2,24 @@
     "presets": [
         "env",
         "stage-0"
-    ]
+        
+    ],
+    "plugins": [["inline-dotenv",{
+      "path": ".env"
+    }],["transform-runtime", {
+      "regenerator": true
+    }]],
+    "env": {
+        "production": {
+            "plugins": [["inline-dotenv",{
+              "path": ".env.production"
+            }]]
+          },
+          "development": {
+            "plugins": [["inline-dotenv",{
+              "path": ".env.development"
+            }]]
+          }
+          
+    }
 }
